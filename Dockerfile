@@ -26,7 +26,7 @@ RUN python -m spacy download en_core_web_sm
 COPY --chown=appuser:appuser . .
 
 # Expose the port Streamlit runs on
-EXPOSE 8501
+EXPOSE 7860
 
 # Set the command to run the application
 # We use python -m streamlit instead of just streamlit to ensure it uses the user-installed package
