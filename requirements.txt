@@ -6,7 +6,6 @@ pandas
 numpy
 
 # NLP and ML Libraries
-nltk
 spacy==3.7.4 # Pinned to ensure model compatibility
 arxiv
 faiss-cpu

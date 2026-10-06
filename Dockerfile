@@ -25,10 +25,9 @@ RUN python -m spacy download en_core_web_sm
 # Copy the rest of the application code
 COPY --chown=appuser:appuser . .
 
-# Expose the port Streamlit runs on
-EXPOSE 7860
+# Expose the default Streamlit port
+EXPOSE 8501
 
 # Set the command to run the application
 # We use python -m streamlit instead of just streamlit to ensure it uses the user-installed package
-CMD ["python", "-m", "streamlit", "run", "smartresearch_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
-
+CMD ["sh", "-c", "python -m streamlit run smartresearch_app.py --server.port=${PORT:-8501} --server.address=0.0.0.0"]
