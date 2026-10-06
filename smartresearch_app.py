@@ -1,14 +1,14 @@
 import streamlit as st
 import pandas as pd
-import re, nltk, time, sqlite3, math
+import re, time, sqlite3, math
 import arxiv
 from sentence_transformers import SentenceTransformer
 import faiss, numpy as np
 from bertopic import BERTopic
-from nltk.corpus import stopwords
 from datetime import datetime
 import torch
-import en_core_web_sm
+import spacy
+from spacy.lang.en.stop_words import STOP_WORDS
 
 # ---------------------------
 # CONFIGURATION
@@ -27,17 +27,11 @@ CONFIG = {
 # ---------------------------
 st.set_page_config(page_title="SmartResearch Advisor", layout="centered")
 
-@st.cache_data
-def download_nltk_data():
-    nltk.download('punkt')
-    nltk.download('stopwords')
-    return set(stopwords.words("english"))
-
-STOP = download_nltk_data()
+STOP = set(STOP_WORDS)
 
 @st.cache_resource
 def get_spacy_model():
-    return en_core_web_sm.load(disable=['parser', 'ner']) # Disable unused components for speed
+    return spacy.load("en_core_web_sm", disable=['parser', 'ner']) # Disable unused components for speed
 
 @st.cache_resource
 def get_embedding_model():

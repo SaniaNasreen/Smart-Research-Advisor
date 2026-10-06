@@ -48,8 +48,8 @@ If you prefer to run the application locally:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/smartresearch.git](https://github.com/your-username/smartresearch.git)
-    cd smartresearch
+    git clone https://github.com/SaniaNasreen/Smart-Research-Advisor.git
+    cd Smart-Research-Advisor
     ```
 
 2.  **Create and activate a virtual environment:**
@@ -73,6 +73,19 @@ If you prefer to run the application locally:
 With the virtual environment activated, run the following command to launch the Streamlit app:
 ```bash
 streamlit run smartresearch_app.py
+```
+
+---
+
+## ☁️ Deployment
+This project is deployment-ready via Docker on platforms like Render, Railway, Fly.io, and Hugging Face Spaces.
+
+- The container listens on `PORT` when provided by the platform.
+- Locally it defaults to port `8501`.
+
+Example (platform-managed port):
+```bash
+docker run -e PORT=7860 -p 7860:7860 smart-research-advisor
 ```
 
 ---
